@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Aligne ce chiffre sur la hauteur réelle de ta navbar pour ne pas couper tes titres */
+}
