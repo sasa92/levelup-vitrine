@@ -147,7 +147,7 @@ export default function NassimaProjectPage() {
                       </div>
                       <div>
                         <span className="text-[9px] font-mono font-bold tracking-widest text-slate-500 uppercase block mb-1">
-                          // {feat.label}
+                          
                         </span>
                         <h4 className="text-white text-sm font-bold uppercase tracking-wide mb-1">{feat.title}</h4>
                         <p className="text-slate-400 text-xs leading-relaxed">{feat.desc}</p>

@@ -36,7 +36,7 @@ export default function FacturationProjectPage() {
           </div>
 
           <h1 className="text-white text-3xl md:text-6xl font-black tracking-tight uppercase mb-6 leading-none">
-             <span className="text-slate-500 font-light">— Gestionnaire de facture </span>
+             <span className="text-slate-500 font-light">Gestionnaire de facture </span>
           </h1>
 
           <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-3xl mb-8 font-medium">
@@ -134,9 +134,9 @@ export default function FacturationProjectPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
-{ title: "Flux Média API", desc: "Récupération dynamique et intégration propre des reportages vidéo.", icon: <Video size={20} />, label: "INTEGRATION" },                  { title: "Structure SQL avec Supabase", desc: "Architecture de base de données stable pour le stockage des factures.", icon: <Database size={20} />, label: "DATA_CORE" },
-                  { title: "Responsive Fluidity", desc: "Adaptation pixel-perfect testée sur différentes platformes.", icon: <Layout size={20} />, label: "ENGINE_UI" },
-                  { title: "Validation & Guard", desc: "Formulaires de contact sécurisés contre les injections malveillantes.", icon: <ShieldCheck size={20} />, label: "SECURITY" }
+{ title: "Flux Média API", desc: "Récupération dynamique et intégration propre des reportages vidéo.", icon: <Video size={20} />,  },                  { title: "Structure SQL avec Supabase", desc: "Architecture de base de données stable pour le stockage des factures.", icon: <Database size={20} /> },
+                  { title: "Responsive Fluidity", desc: "Adaptation pixel-perfect testée sur différentes platformes.", icon: <Layout size={20} /> },
+                  { title: "Validation & Guard", desc: "Formulaires de contact sécurisés contre les injections malveillantes.", icon: <ShieldCheck size={20} /> }
                 ].map((feat, idx) => (
                   <div key={idx} className="bg-slate-900/30 border border-slate-900 p-6 rounded-2xl shadow-lg">
                     <div className="flex items-start gap-4">
@@ -145,7 +145,7 @@ export default function FacturationProjectPage() {
                       </div>
                       <div>
                         <span className="text-[9px] font-mono font-bold tracking-widest text-slate-500 uppercase block mb-1">
-                          // {feat.label}
+                          
                         </span>
                         <h4 className="text-white text-sm font-bold uppercase tracking-wide mb-1">{feat.title}</h4>
                         <p className="text-slate-400 text-xs leading-relaxed">{feat.desc}</p>
