@@ -43,7 +43,7 @@ export default function FacturationProjectPage() {
             Conception d'une application web métier dédiée à la facturation pour indépendants et TPE. Automatisation du calcul des taxes, génération instantanée de PDF conformes et suivi temps réel des encaissements sur une interface épurée.          </p>
 
           <a 
-            href="https://nassimaouail.42web.io/?i=1" //mettre le lien qui pointe vers le site de gestion de facture
+            href="https://projet-facturation-mu.vercel.app/"
             target="_blank" 
             rel="noopener noreferrer"
             className="w-fit py-3.5 px-8 bg-white text-slate-950 text-xs font-bold tracking-widest hover:bg-indigo-500 hover:text-white transition-all flex items-center justify-center gap-2 uppercase rounded-full shadow-lg shadow-black/20"
@@ -121,7 +121,7 @@ export default function FacturationProjectPage() {
                   "Conception d'un outil de facturation rapide, pensé pour réduire le temps de gestion administrative."
                 </p>
                 <p className="text-slate-400 text-xs md:text-sm leading-relaxed">
-                La plateforme intègre un moteur de calcul réactif côté client combiné à une base de données relationnelle sécurisée. L'architecture permet l'édition de documents comptables, l'exportation PDF immédiate et la réconciliation des paiements.                </p>
+                La plateforme intègre un moteur de calcul réactif côté client combiné à une base de données relationnelle sécurisée. L'architecture permet l'édition de documents comptables, l'exportation PDF et Excel immédiate et la réconciliation des paiements.                </p>
               </div>
             </section>
 
@@ -134,8 +134,8 @@ export default function FacturationProjectPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
-{ title: "Flux Média API", desc: "Récupération dynamique et intégration propre des reportages vidéo.", icon: <Video size={20} />, label: "INTEGRATION" },                  { title: "Structure MySQL", desc: "Architecture de base de données stable pour le stockage des articles.", icon: <Database size={20} />, label: "DATA_CORE" },
-                  { title: "Responsive Fluidity", desc: "Adaptation pixel-perfect testée sur iOS, Android, Mac et PC OS.", icon: <Layout size={20} />, label: "ENGINE_UI" },
+{ title: "Flux Média API", desc: "Récupération dynamique et intégration propre des reportages vidéo.", icon: <Video size={20} />, label: "INTEGRATION" },                  { title: "Structure SQL avec Supabase", desc: "Architecture de base de données stable pour le stockage des factures.", icon: <Database size={20} />, label: "DATA_CORE" },
+                  { title: "Responsive Fluidity", desc: "Adaptation pixel-perfect testée sur différentes platformes.", icon: <Layout size={20} />, label: "ENGINE_UI" },
                   { title: "Validation & Guard", desc: "Formulaires de contact sécurisés contre les injections malveillantes.", icon: <ShieldCheck size={20} />, label: "SECURITY" }
                 ].map((feat, idx) => (
                   <div key={idx} className="bg-slate-900/30 border border-slate-900 p-6 rounded-2xl shadow-lg">
