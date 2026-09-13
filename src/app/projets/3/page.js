@@ -31,7 +31,7 @@ export default function FacturationProjectPage() {
           
           <div className="flex items-center gap-3 mb-6">
             <span className="text-[10px] text-indigo-400 font-bold border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-1 rounded-md uppercase tracking-widest">
-              Statut : En cours de développement
+              Statut : Terminé
             </span>
           </div>
 
@@ -74,8 +74,9 @@ export default function FacturationProjectPage() {
                 <div className="bg-slate-950 aspect-video relative overflow-hidden flex items-center justify-center">
                   <div className="absolute inset-0 bg-indigo-500/5 z-10 pointer-events-none" />
                   <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                    <source src="https://sdakhrqpvztbabsynbxo.supabase.co/storage/v1/object/public/medias_du_projet/videos/nassima_desktop.mp4" type="video/mp4" />
+                    <source src="/video/ScreenRecorder_20260913112918Trim.mp4.zip" type="video/mp4" />
                   </video>
+                  
                 </div>
               </div>
             </div>

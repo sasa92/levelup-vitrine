@@ -52,7 +52,7 @@ export async function POST(request) {
       `
     };
 
-    // 2. DESIGN PRO ET IMMERSIF POUR L'E-MAIL DE CONFIRMATION DU CLIENT
+    // L'E-MAIL DE CONFIRMATION DU CLIENT
     const mailToClient = {
       from: process.env.EMAIL_USER,
       to: email,

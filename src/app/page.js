@@ -148,7 +148,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-slate-900/50 rounded-2xl border border-slate-800/30 translate-x-4 translate-y-4 rotate-4 group-hover:rotate-8 transition-transform duration-300 -z-20" />
 
               <div>
-                <span className="text-[10px] font-bold tracking-widest text-indigo-400 uppercase">// PORTFOLIO</span>
+                <span className="text-[10px] font-bold tracking-widest text-indigo-400 uppercase"></span>
                 <h3 className="text-xl font-black uppercase tracking-tight mt-2 text-white/90">Débloquer les projets</h3>
               </div>
               
@@ -345,7 +345,7 @@ export default function Home() {
             
             {/* EXPERTISE 1 */}
             <div className="space-y-4 group">
-              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest">// 01 . INTERFACES HAUTE COUTURE</div>
+              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
               <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">UI / UX Design</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Conception de maquettes minimalistes et immersives adaptées à votre image. Chaque pixel, transition et animation est pensé pour capter l'attention de vos visiteurs.
@@ -354,7 +354,7 @@ export default function Home() {
 
             {/* EXPERTISE 2 */}
             <div className="space-y-4 group">
-              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest">// 02 . ARCHITECTURE MODERNE</div>
+              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
               <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Développement Next.js</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Code propre, performant et optimisé pour le référencement (SEO). Nous utilisons les dernières technologies pour garantir un affichage instantané sur mobile et ordinateur.
@@ -363,7 +363,7 @@ export default function Home() {
 
             {/* EXPERTISE 3 */}
             <div className="space-y-4 group">
-              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest">// 03 . AUTONOMIE TOTALE</div>
+              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
               <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Solutions Connectées</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Intégration d'API tierces (YouTube, Stripe), de bases de données dynamiques ou d'outils de gestion de contenu simples pour vous laisser les commandes de votre site.
