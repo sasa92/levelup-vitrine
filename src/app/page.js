@@ -1,13 +1,15 @@
 "use client"; // Obligatoire pour utiliser le système de clic (useState)
 
 import { Mail } from 'lucide-react'; // Uniquement Mail !
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
   // Cet état gère si le paquet de cartes est ouvert ou fermé
   const [isDeckOpen, setIsDeckOpen] = useState(false);
   const [status, setStatus] = useState("idle"); // idle, loading, success, error
+
+
 
   // Les données de tes 3 projets
   const projets = [
@@ -26,7 +28,7 @@ export default function Home() {
       titre: "Resto & Booking Engine",
       type: "E-Commerce & RDV",
       description: "Maquette interactive pour un restaurant avec menu dynamique et système de réservation de table en ligne.",
-      image: "/images/restaurant.jpg",
+      image: "/images/restaurant.png",
       lien: "#",
       isLive: false,
       delayClass: "delay-[200ms]"
@@ -36,12 +38,24 @@ export default function Home() {
       titre: "Générateur de Factures",
       type: "Outil Métier (SaaS)",
       description: "Application web permettant de générer, calculer la TVA et exporter des factures pro en PDF en un clic.",
-      image: "/images/factures.jpg",
+      image: "/images/factures.png",
       lien: "#",
       isLive: false,
       delayClass: "delay-[300ms]"
     }
   ];
+
+  // État pour le carrousel
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Défilement automatique toutes les 5 secondes
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === projets.length - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [projets.length]);
+
 
   return (
     <div className="min-h-screen bg-slate-950 text-white antialiased selection:bg-indigo-500 selection:text-white scroll-smooth">
@@ -70,7 +84,7 @@ export default function Home() {
           {/* LE LOGO STYLE STUDIO EN CODE */}
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="text-xl md:text-2xl font-black tracking-tighter uppercase leading-none text-white font-sans">
-              LEVEL<span className="text-indigo-500">UP</span>
+               SAMORA <span className="text-indigo-500">IT</span>
             </div>
             <div className="text-xs font-bold tracking-tight uppercase leading-none hidden lg:block border-l border-white/20 pl-4 text-white/40">
               Passez au niveau <span className="text-white/80">supérieur</span>
@@ -87,12 +101,46 @@ export default function Home() {
           </nav>
         </header>
 
-        {/* 3. LE TITRE GÉANT AU CENTRE */}
-        <div className="relative z-20 flex-1 flex items-center justify-center px-4">
-          <h1 className="text-6xl sm:text-8xl md:text-[11rem] lg:text-[14rem] font-black tracking-tighter uppercase select-none text-center leading-none">
-            LevelUP
+      
+  {/* 3. LE TITRE GÉANT AU CENTRE - VERSION ULTRA PREMIUM & CONTRASTÉE */}
+        <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-4 w-full mt-10">
+          
+          {/* Petit badge élégant au-dessus du titre */}
+          <div className="mb-6 md:mb-8 flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+            <span className="text-[9px] md:text-[10px] font-bold tracking-widest uppercase text-white/90 font-mono drop-shadow-md">
+              Studio de création technologique
+            </span>
+          </div>
+
+          {/* Le grand titre SAMORA IT avec effet de lueur sur le IT */}
+          <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] font-black tracking-tighter uppercase text-center flex flex-col md:flex-row items-center justify-center leading-none select-none">
+            {/* Ombre portée renforcée pour "SAMORA" */}
+            <span className="text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">SAMORA</span>
+            <span className="relative ml-0 md:ml-4 mt-2 md:mt-0">
+              {/* Lueur (glow) derrière le IT */}
+              <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-400 blur-2xl opacity-60"></span>
+              {/* Le texte IT en dégradé */}
+              <span className="relative text-transparent bg-clip-text bg-gradient-to-br from-indigo-400 to-cyan-300 drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+                IT
+              </span>
+            </span>
           </h1>
-        </div>
+
+          {/* Sous-titre avec ombre portée (text-shadow) pour la lisibilité */}
+          <p className="mt-8 md:mt-12 text-sm md:text-base text-slate-200 max-w-2xl text-center font-medium leading-relaxed drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] px-4">
+            Nous concevons des <strong className="text-white font-bold">applications web</strong> et des <strong className="text-white font-bold">expériences visuelles</strong> sur-mesure pour les entreprises qui refusent les compromis techniques.
+          </p>
+
+          {/* Bouton d'action stylisé */}
+          <div className="mt-10">
+            <a href="#projets" className="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-slate-950 font-bold text-xs tracking-widest uppercase overflow-hidden transition-transform hover:scale-105 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.4)]">
+              <span className="relative z-10 transition-colors group-hover:text-indigo-600">Explorer les productions</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-100 to-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </a>
+          </div>
+          
+        </div>                                                                                                                                                                                                                       
 
         {/* 4. BARRE D'INFOS EN BAS */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pb-8 grid grid-cols-2 md:grid-cols-3 items-end text-[10px] md:text-xs font-medium tracking-widest uppercase text-white/60">
@@ -122,110 +170,117 @@ export default function Home() {
         </div>
       </div>
 
-      {/* SECTION RÉALISATIONS (JEU DE CARTES AVEC TRANSITION NETTE ET COMPOSITION STABLE) */}
-      <section id="projets" className="bg-slate-950 pb-32 px-6 overflow-hidden">
+  {/* SECTION RÉALISATIONS (IMMERSION TOTALE STYLE FRAMER) */}
+      <section id="projets" className="bg-slate-950 py-24 overflow-hidden">
         
-        {/* TITRE DE LA ZONE */}
-        <div className="max-w-6xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-light tracking-tight max-w-3xl mx-auto leading-tight text-white/90">
-            Des productions sur-mesure livrées par le studio.
+        {/* TITRE DE LA ZONE - Plus discret pour laisser la vedette au carrousel */}
+        <div className="w-full px-6 md:px-12 mb-10 flex justify-between items-end">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase text-white/90">
+            Créations <span className="text-indigo-400">Récentes</span>
           </h2>
+          <div className="hidden md:flex gap-4">
+            <span className="text-[10px] font-mono text-slate-500 tracking-widest uppercase">// 2026 EDITION</span>
+          </div>
         </div>
 
-        {/* CONTENEUR STRUCTUREL DE SÉCURITÉ : Évite les sauts de hauteur violents */}
-        <div className="relative w-full max-w-6xl mx-auto min-h-[460px] flex items-center justify-center">
+ {/* CONTENEUR DU CARROUSEL : IMMERSIF ET LISIBLE */}
+        <div className="relative w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] mx-auto h-[75vh] min-h-[600px] max-h-[900px] rounded-[2rem] md:rounded-[3rem] overflow-hidden group bg-slate-900 border border-white/10 shadow-[0_0_100px_rgba(99,102,241,0.1)]">
           
-          {/* LE PAQUET FERMÉ : Reste fixe au centre et s'estompe sans casser le flux de la page */}
-          <div className={`absolute transition-all duration-500 ease-in-out transform flex justify-center items-center z-30 ${
-            isDeckOpen ? "opacity-0 scale-90 pointer-events-none invisible" : "opacity-100 scale-100 visible"
-          }`}>
-            <button 
-              onClick={() => setIsDeckOpen(true)}
-              className="group relative w-80 h-[420px] bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl border border-slate-800 shadow-2xl flex flex-col justify-between p-8 cursor-pointer text-left"
-            >
-              {/* Cartes superposées en arrière-plan */}
-              <div className="absolute inset-0 bg-slate-900/90 rounded-2xl border border-slate-800/50 translate-x-2 translate-y-2 rotate-2 group-hover:rotate-4 transition-transform duration-300 -z-10" />
-              <div className="absolute inset-0 bg-slate-900/50 rounded-2xl border border-slate-800/30 translate-x-4 translate-y-4 rotate-4 group-hover:rotate-8 transition-transform duration-300 -z-20" />
-
-              <div>
-                <span className="text-[10px] font-bold tracking-widest text-indigo-400 uppercase"></span>
-                <h3 className="text-xl font-black uppercase tracking-tight mt-2 text-white/90">Débloquer les projets</h3>
-              </div>
-              
-              <div className="w-10 h-10 rounded-full bg-white text-slate-950 flex items-center justify-center font-bold text-lg shadow-lg self-end group-hover:bg-indigo-500 group-hover:text-white transition-colors">
-                +
-              </div>
-            </button>
-          </div>
-
-    {/* LES 3 CARTES : Intégration en grille CSS pure, fluide et 100% responsive */}
-          <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ease-out z-20 ${
-            isDeckOpen ? "opacity-100 scale-100 relative" : "opacity-0 scale-95 pointer-events-none absolute inset-0 invisible"
-          }`}>
+          {/* LOGIQUE D'AFFICHAGE DU CARROUSEL */}
+          <div 
+            className="flex h-full transition-transform duration-1000 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
             {projets.map((p) => (
               <Link 
-                key={p.id}
+                key={p.id} 
                 href={`/projets/${p.id}`}
-                className={`bg-slate-900/30 backdrop-blur-sm border border-slate-900 rounded-2xl overflow-hidden shadow-xl flex flex-col transform transition-all duration-300 ease-out hover:scale-[1.02] hover:-translate-y-2 hover:border-indigo-500/30 hover:bg-slate-900/60 hover:shadow-2xl hover:shadow-indigo-500/5 cursor-pointer ${
-                  isDeckOpen ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                } ${p.delayClass}`}
+                className="w-full h-full flex-shrink-0 relative group/slide cursor-pointer block"
               >
-                {/* Zone de l'image */}
-                <div className="h-48 relative bg-gradient-to-tr from-slate-900 to-slate-950 flex items-center justify-center overflow-hidden border-b border-slate-900">
-                  {/* Texte de fond par défaut */}
-                  <span className="text-xs font-mono text-slate-600 uppercase tracking-widest">[ Aperçu {p.id} ]</span>
-                  
-                  {/* Image automatique : elle se cache si le fichier est introuvable */}
-                  <img 
-                    src={p.image} 
-                    alt={p.titre} 
-                    className="absolute inset-0 w-full h-full object-cover"
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                  />
+                
+                {/* L'image de fond */}
+                <img 
+                  src={p.image} 
+                  alt={p.titre} 
+                  className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover/slide:scale-100 transition-transform duration-1000"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+
+                {/* OVERLAYS CORRIGÉS */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent opacity-100"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent w-full md:w-4/5 opacity-90"></div>
+
+                {/* CONTENU TEXTUEL */}
+                <div className="absolute inset-0 p-8 md:p-16 lg:p-24 flex flex-col justify-end">
+                  <div className="max-w-4xl transform transition-all duration-1000 translate-y-0">
+                    
+                    {/* Badge avec fond pour ressortir */}
+                    <span className="inline-block text-[10px] font-mono font-bold tracking-[0.2em] text-indigo-400 uppercase border border-indigo-500/30 bg-slate-950/50 backdrop-blur-md px-3 py-1.5 rounded-full mb-6">
+                      [ {p.type} ]
+                    </span>
+                    
+                    {/* Titre géant */}
+                    <h3 className="text-4xl md:text-6xl lg:text-[5rem] font-black text-white uppercase tracking-tighter leading-tight mb-8 drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]">
+                      {p.titre}
+                    </h3>
+                    
+                    <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
+                      {/* Description lisible */}
+                      <p className="text-sm md:text-lg text-slate-300 font-medium leading-relaxed max-w-xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                        {p.description}
+                      </p>
+                      
+                      {/* BOUTON MODIFIÉ : Mieux visible et animé dès qu'on survole l'image */}
+                      <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-white mt-2 w-max">
+                        <span className="relative pb-2 overflow-hidden">
+                          <span className="relative z-10 transition-colors duration-300 group-hover/slide:text-indigo-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                            Explorer le cas client
+                          </span>
+                          {/* Ligne de soulignement plus épaisse (2px) et visible par défaut (white/50) */}
+                          <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white/50 transform origin-left transition-all duration-300 group-hover/slide:scale-x-100 group-hover/slide:bg-indigo-400"></span>
+                        </span>
+                        
+                        {/* Cercle avec flèche animée (bordure plus épaisse) */}
+                        <span className="w-10 h-10 rounded-full border-2 border-white/40 flex items-center justify-center group-hover/slide:border-indigo-400 group-hover/slide:bg-indigo-500/20 transition-all duration-300 transform group-hover/slide:translate-x-2 shadow-[0_0_15px_rgba(0,0,0,0.5)] backdrop-blur-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-colors duration-300 group-hover/slide:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </span>
+                      </div>
+
+                    </div>
+
+                  </div>
                 </div>
 
-                {/* Contenu textuel */}
-                <div className="p-6 flex-1 flex flex-col justify-between text-left">
-                  <div>
-                    <span className="text-[9px] font-bold tracking-widest text-indigo-400 uppercase bg-indigo-950/30 px-2 py-0.5 rounded border border-indigo-900/30">
-                      {p.type}
-                    </span>
-                    <h3 className="text-lg font-bold mt-4 mb-2 text-white/90">{p.titre}</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">{p.description}</p>
-                  </div>
-
-                  {/* Redirections et liens */}
-                  <div className="mt-8 pt-4 border-t border-slate-900 flex justify-between items-center">
-                    {p.isLive ? (
-                      <span className="text-xs font-bold tracking-widest uppercase text-white hover:text-indigo-400 transition inline-flex items-center gap-1">
-                        Voir le site live →
-                      </span>
-                    ) : (
-                      <span className="text-xs font-bold tracking-widest uppercase text-slate-600">
-                        Modèle...
-                      </span>
-                    )}
-                    <span className="text-[10px] text-slate-500 hover:text-white underline transition">
-                      Détails
-                    </span>
-                  </div>
-                </div>
               </Link>
             ))}
           </div>
-        
 
-        </div>
-
-        {/* BOUTON POUR FERMER LA GALERIE */}
-        {isDeckOpen && (
+          {/* FLÈCHE DE NAVIGATION DROITE */}
           <button 
-            onClick={() => setIsDeckOpen(false)}
-            className="mt-16 text-xs font-bold tracking-widest uppercase text-slate-600 hover:text-white transition block mx-auto text-center"
+            onClick={() => setCurrentSlide((prev) => (prev === projets.length - 1 ? 0 : prev + 1))}
+            className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-slate-950 transition-all duration-500 z-20 group/btn"
+            aria-label="Projet suivant"
           >
-            ↑ Rassembler les cartes
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 md:h-10 md:w-10 transform group-hover/btn:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </button>
-        )}
+
+          {/* INDICATEURS DE POSITION */}
+          <div className="absolute bottom-8 md:bottom-12 right-8 md:right-16 flex gap-3 z-20">
+            {projets.map((_, idx) => (
+              <button 
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`h-[2px] transition-all duration-700 ease-out ${
+                  currentSlide === idx ? "w-16 bg-white" : "w-6 bg-white/30 hover:bg-white/60"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </section>
 
 {/* ========================================================================= */}
@@ -504,7 +559,7 @@ export default function Home() {
             {/* GAUCHE : LOGO ET STATUT */}
             <div className="space-y-3">
               <div className="text-xl md:text-2xl font-black tracking-tighter uppercase text-white">
-                LEVEL<span className="text-indigo-500">UP</span>
+                 SAMORA <span className="text-indigo-500">IT</span>
               </div>
               
               <div className="space-y-1 pt-3 border-t border-slate-900 max-w-sm">
@@ -579,8 +634,8 @@ export default function Home() {
 
           {/* Mentions légales discrètes en bas */}
           <div className="mt-12 pt-6 border-t border-slate-900 text-center"> {/* Réduit de mt-20 à mt-12 */}
-            <p className="text-[9px] text-slate-600 tracking-widest uppercase">
-              © 2026 LevelUP — TOUS DROITS RÉSERVÉS // Fait avec passion à Paris
+              <p className="text-[9px] text-slate-600 tracking-widest uppercase">
+                © 2026 SAMORA IT — TOUS DROITS RÉSERVÉS // Fait avec passion à Paris
             </p>
           </div>
 

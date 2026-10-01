@@ -12,14 +12,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-     title: "LevelUP - Solutions Web sur-mesure",
+     title: " SAMORA IT - Solutions Web sur-mesure",
      description: "Développement de sites vitrines et outils business pour propulser votre activité.",
    };
 
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
+      lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
