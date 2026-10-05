@@ -18,9 +18,10 @@ export default function FacturationProjectPage() {
         {/* 1. BOUTON RETOUR ÉLÉGANT */}
         <div className="mb-12">
           <Link 
-            href="/" 
+            href="/#projets" 
             className="w-fit py-2.5 px-5 bg-slate-900 border border-slate-800 text-slate-400 text-xs font-bold tracking-widest hover:text-white hover:border-indigo-500/50 hover:bg-indigo-950/20 transition-all flex items-center gap-2 uppercase rounded-full"
-          >
+          scroll={true}
+         >
             <ArrowLeft size={14} className="text-indigo-400" /> Retour au studio
           </Link>
         </div>
@@ -42,14 +43,7 @@ export default function FacturationProjectPage() {
           <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-3xl mb-8 font-medium">
             Développement d'une plateforme web complète combinant vitrine immersive et moteur de réservation dynamique. L'application permet aux clients de composer leur commande, de réserver une table selon les créneaux disponibles et de visualiser la carte interactive en temps réel, garantissant une réduction des appels en plein coup de feu et zéro double réservation.          </p>
 
-          <a 
-            href="https://levelup-resto-demo.vercel.app/"
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-fit py-3.5 px-8 bg-white text-slate-950 text-xs font-bold tracking-widest hover:bg-indigo-500 hover:text-white transition-all flex items-center justify-center gap-2 uppercase rounded-full shadow-lg shadow-black/20"
-          >
-            Tester l'application en direct <ExternalLink size={14} />
-          </a>
+
         </div>
 
        {/* 3. COIN DÉMONSTRATION RESPONSIVE (ORDINATEUR + TÉLÉPHONE) */}
@@ -74,7 +68,7 @@ export default function FacturationProjectPage() {
                 <div className="bg-slate-950 aspect-video relative overflow-hidden flex items-center justify-center">
                   <div className="absolute inset-0 bg-indigo-500/5 z-10 pointer-events-none" />
                   <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                    <source src="/video/ScreenRecorder_20260913112918Trim.mp4.zip" type="video/mp4" />
+                    <source src="https://tsryjwglmttyitxedhvn.supabase.co/storage/v1/object/public/LevelUP92/videos/resto-desktop.mp4" type="video/mp4" />
                   </video>
                   
                 </div>
@@ -96,7 +90,7 @@ export default function FacturationProjectPage() {
               {/* Zone de rendu de la capture/vidéo Mobile */}
               <div className="w-full h-full bg-slate-950 relative z-10 overflow-hidden flex items-center justify-center">
                 <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                  <source src="https://sdakhrqpvztbabsynbxo.supabase.co/storage/v1/object/public/medias_du_projet/videos/nassima_mobile.mp4" type="video/mp4" />
+                  <source src="https://tsryjwglmttyitxedhvn.supabase.co/storage/v1/object/public/LevelUP92/videos/Resto-Mobile.mp4" type="video/mp4" />
                 </video>
               </div>
             </div>

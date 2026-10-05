@@ -18,8 +18,9 @@ export default function NassimaProjectPage() {
         {/* 1. BOUTON RETOUR ÉLÉGANT */}
         <div className="mb-12">
           <Link 
-            href="/" 
+            href="/#projets" 
             className="w-fit py-2.5 px-5 bg-slate-900 border border-slate-800 text-slate-400 text-xs font-bold tracking-widest hover:text-white hover:border-indigo-500/50 hover:bg-indigo-950/20 transition-all flex items-center gap-2 uppercase rounded-full"
+           scroll={true}
           >
             <ArrowLeft size={14} className="text-indigo-400" /> Retour au studio
           </Link>

@@ -183,200 +183,264 @@ export default function Home() {
           </div>
         </div>
 
- {/* CONTENEUR DU CARROUSEL : IMMERSIF ET LISIBLE */}
-        <div className="relative w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] mx-auto h-[75vh] min-h-[600px] max-h-[900px] rounded-[2rem] md:rounded-[3rem] overflow-hidden group bg-slate-900 border border-white/10 shadow-[0_0_100px_rgba(99,102,241,0.1)]">
-          
-          {/* LOGIQUE D'AFFICHAGE DU CARROUSEL */}
-          <div 
-            className="flex h-full transition-transform duration-1000 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {projets.map((p) => (
-              <Link 
-                key={p.id} 
-                href={`/projets/${p.id}`}
-                className="w-full h-full flex-shrink-0 relative group/slide cursor-pointer block"
-              >
+{/* CONTENEUR DU CARROUSEL : IMMERSIF ET LISIBLE */}
+<div className="relative w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] mx-auto h-[75vh] min-h-[600px] max-h-[900px] rounded-[2rem] md:rounded-[3rem] overflow-hidden group bg-slate-900 border border-white/10 shadow-[0_0_100px_rgba(99,102,241,0.1)]">
+  
+  {/* LOGIQUE D'AFFICHAGE DU CARROUSEL */}
+  <div 
+    className="flex h-full transition-transform duration-700 ease-in-out"
+    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+  >
+    {projets.map((p) => (
+      <Link 
+        key={p.id} 
+        href={`/projets/${p.id}`}
+        className="w-full h-full flex-shrink-0 relative group/slide cursor-pointer block"
+      >
+        
+        {/* L'image de fond */}
+        <img 
+          src={p.image} 
+          alt={p.titre} 
+          className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover/slide:scale-100 transition-transform duration-1000"
+        />
+
+        {/* OVERLAYS CORRIGÉS */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent opacity-100"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent w-full md:w-4/5 opacity-90"></div>
+
+        {/* CONTENU TEXTUEL AJUSTÉ */}
+        <div className="absolute inset-0 p-6 pb-24 md:p-16 lg:p-24 flex flex-col justify-end z-10">
+          <div className="max-w-[85%] md:max-w-4xl transform transition-all duration-1000 translate-y-0">
+            
+            {/* Badge avec fond pour ressortir */}
+            <span className="inline-block text-[10px] font-mono font-bold tracking-[0.2em] text-indigo-400 uppercase border border-indigo-500/30 bg-slate-950/50 backdrop-blur-md px-3 py-1.5 rounded-full mb-6">
+              [ {p.type} ]
+            </span>
+            
+            {/* Titre géant */}
+            <h3 className="text-4xl md:text-6xl lg:text-[5rem] font-black text-white uppercase tracking-tighter leading-tight mb-8 drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]">
+              {p.titre}
+            </h3>
+            
+            <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
+              {/* Description lisible */}
+              <p className="text-sm md:text-lg text-slate-300 font-medium leading-relaxed max-w-xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                {p.description}
+              </p>
+              
+              {/* BOUTON */}
+              <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-white mt-2 w-max">
+                <span className="relative pb-2 overflow-hidden">
+                  <span className="relative z-10 transition-colors duration-300 group-hover/slide:text-indigo-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                    Explorer le cas client
+                  </span>
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white/50 transform origin-left transition-all duration-300 group-hover/slide:scale-x-100 group-hover/slide:bg-indigo-400"></span>
+                </span>
                 
-                {/* L'image de fond */}
-                <img 
-                  src={p.image} 
-                  alt={p.titre} 
-                  className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover/slide:scale-100 transition-transform duration-1000"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                />
+                <span className="w-10 h-10 rounded-full border-2 border-white/40 flex items-center justify-center group-hover/slide:border-indigo-400 group-hover/slide:bg-indigo-500/20 transition-all duration-300 transform group-hover/slide:translate-x-2 shadow-[0_0_15px_rgba(0,0,0,0.5)] backdrop-blur-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-colors duration-300 group-hover/slide:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
 
-                {/* OVERLAYS CORRIGÉS */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent opacity-100"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent w-full md:w-4/5 opacity-90"></div>
+            </div>
 
-                {/* CONTENU TEXTUEL */}
-                <div className="absolute inset-0 p-8 md:p-16 lg:p-24 flex flex-col justify-end">
-                  <div className="max-w-4xl transform transition-all duration-1000 translate-y-0">
-                    
-                    {/* Badge avec fond pour ressortir */}
-                    <span className="inline-block text-[10px] font-mono font-bold tracking-[0.2em] text-indigo-400 uppercase border border-indigo-500/30 bg-slate-950/50 backdrop-blur-md px-3 py-1.5 rounded-full mb-6">
-                      [ {p.type} ]
-                    </span>
-                    
-                    {/* Titre géant */}
-                    <h3 className="text-4xl md:text-6xl lg:text-[5rem] font-black text-white uppercase tracking-tighter leading-tight mb-8 drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]">
-                      {p.titre}
-                    </h3>
-                    
-                    <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
-                      {/* Description lisible */}
-                      <p className="text-sm md:text-lg text-slate-300 font-medium leading-relaxed max-w-xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
-                        {p.description}
-                      </p>
-                      
-                      {/* BOUTON MODIFIÉ : Mieux visible et animé dès qu'on survole l'image */}
-                      <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-white mt-2 w-max">
-                        <span className="relative pb-2 overflow-hidden">
-                          <span className="relative z-10 transition-colors duration-300 group-hover/slide:text-indigo-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                            Explorer le cas client
-                          </span>
-                          {/* Ligne de soulignement plus épaisse (2px) et visible par défaut (white/50) */}
-                          <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white/50 transform origin-left transition-all duration-300 group-hover/slide:scale-x-100 group-hover/slide:bg-indigo-400"></span>
-                        </span>
-                        
-                        {/* Cercle avec flèche animée (bordure plus épaisse) */}
-                        <span className="w-10 h-10 rounded-full border-2 border-white/40 flex items-center justify-center group-hover/slide:border-indigo-400 group-hover/slide:bg-indigo-500/20 transition-all duration-300 transform group-hover/slide:translate-x-2 shadow-[0_0_15px_rgba(0,0,0,0.5)] backdrop-blur-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-colors duration-300 group-hover/slide:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        </span>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-
-              </Link>
-            ))}
-          </div>
-
-          {/* FLÈCHE DE NAVIGATION DROITE */}
-          <button 
-            onClick={() => setCurrentSlide((prev) => (prev === projets.length - 1 ? 0 : prev + 1))}
-            className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-slate-950 transition-all duration-500 z-20 group/btn"
-            aria-label="Projet suivant"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 md:h-10 md:w-10 transform group-hover/btn:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
-
-          {/* INDICATEURS DE POSITION */}
-          <div className="absolute bottom-8 md:bottom-12 right-8 md:right-16 flex gap-3 z-20">
-            {projets.map((_, idx) => (
-              <button 
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`h-[2px] transition-all duration-700 ease-out ${
-                  currentSlide === idx ? "w-16 bg-white" : "w-6 bg-white/30 hover:bg-white/60"
-                }`}
-              />
-            ))}
           </div>
         </div>
+
+      </Link>
+    ))}
+  </div>
+
+  {/* FLÈCHE DE NAVIGATION DROITE */}
+  <button 
+    onClick={() => setCurrentSlide((prev) => (prev === projets.length - 1 ? 0 : prev + 1))}
+    className="hidden md:flex absolute right-12 top-1/2 -translate-y-1/2 w-20 h-20 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-slate-950 transition-all duration-500 z-20 group/btn"
+    aria-label="Projet suivant"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-10 md:w-10 transform group-hover/btn:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </button>
+
+  {/* INDICATEURS DE POSITION */}
+  <div className="absolute bottom-8 md:bottom-12 right-8 md:right-16 flex gap-3 z-20">
+    {projets.map((_, idx) => (
+      <button 
+        key={idx}
+        onClick={() => setCurrentSlide(idx)}
+        className={`h-[2px] transition-all duration-700 ease-out ${
+          currentSlide === idx ? "w-16 bg-white" : "w-6 bg-white/30 hover:bg-white/60"
+        }`}
+      />
+    ))}
+  </div>
+</div>
       </section>
 
 {/* ========================================================================= */}
-        {/* SECTION TARIFS : OFFRES AGRESSIVES & TRANSPARENTES */}
-        {/* ========================================================================= */}
-        <section id="tarifs" className="w-full max-w-6xl mx-auto px-6 py-16 text-center border-t border-slate-900">
+      {/* SECTION TARIFS & MAINTENANCE : OFFRES AGRESSIVES & TRANSPARENTES */}
+      {/* ========================================================================= */}
+      <section id="tarifs" className="w-full max-w-7xl mx-auto px-6 py-24 text-center border-t border-slate-900">
+        
+<div className="mb-16 flex flex-col items-center justify-center gap-5">
+          <span className="inline-block w-fit text-[10px] font-mono text-indigo-400 uppercase tracking-widest border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 rounded-full">
+            // Modèle Économique Transparent
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase text-white">
+            Création sur-mesure. <br className="md:hidden" /> Zéro frais caché.
+          </h2>
+          <p className="text-sm text-slate-400 max-w-xl mx-auto font-medium">
+            Des tarifs de lancement agressifs pour bâtir notre portfolio. Vous payez pour le code et le design, pas pour des abonnements obligatoires.
+          </p>
+        </div>
+
+        {/* 1. LES PRIX DE CRÉATION (ONE-SHOT) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-24 max-w-6xl mx-auto">
           
-          <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono text-indigo-400 uppercase tracking-widest">// DES PRIX QUI DÉFIENT TOUTE CONCURRENCE</span>
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase text-white">Des offres nettes. Zéro frais caché.</h2>
-            <p className="text-xs text-slate-500 max-w-lg mx-auto">
-              Pas d'abonnement mensuel. On crée votre compte hébergeur ensemble, vous restez propriétaire à 100%.
+          {/* OFFRE 1 : VITRINE BASIC */}
+          <div className="bg-slate-900/20 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 flex flex-col justify-between text-left transition-all duration-300 hover:border-slate-700 hover:bg-slate-900/40">
+            <div className="space-y-4">
+              <span className="text-[10px] font-mono font-bold tracking-widest text-slate-500 uppercase">// FORMULE ESSENTIELLE</span>
+              <h3 className="text-2xl font-bold text-white tracking-tight">Site Vitrine</h3>
+              <p className="text-xs text-slate-400 leading-relaxed h-10">Idéal pour poser votre présence en ligne avec un design haut de gamme et ultra-rapide.</p>
+              <div className="pt-4 pb-2">
+                <span className="text-4xl font-black text-white tracking-tighter">290€</span>
+                <span className="text-[10px] font-mono text-slate-500 uppercase ml-2">Prix unique</span>
+              </div>
+              <ul className="space-y-3 pt-6 border-t border-slate-800/60 text-xs text-slate-300 font-medium">
+                <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Page unique d'impact (Landing Page)</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Design 100% Mobile & PC</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Formulaire de contact direct</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Optimisation SEO de base</li>
+              </ul>
+            </div>
+            <a href="#contact" className="mt-8 block w-full text-center text-[10px] font-bold uppercase tracking-widest bg-slate-950 text-white hover:bg-slate-800 py-4 rounded-xl transition border border-slate-800 hover:border-slate-600">
+              Sélectionner
+            </a>
+          </div>
+
+        {/* OFFRE 2 : L'OFFRE PHARE */}
+          <div className="bg-slate-900/60 backdrop-blur-md border-2 border-indigo-500/50 rounded-3xl p-8 flex flex-col justify-between text-left relative shadow-[0_0_40px_rgba(99,102,241,0.1)] transform md:-translate-y-4">
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] bg-indigo-500 text-white px-4 py-1.5 rounded-full font-bold tracking-widest uppercase shadow-lg whitespace-nowrap">
+              Le Meilleur Choix
+            </span>
+            <div className="space-y-4">
+              <span className="text-[10px] font-mono font-bold tracking-widest text-indigo-400 uppercase">// PACK DIGITALISATION</span>
+              <h3 className="text-2xl font-bold text-white tracking-tight">Vitrine + CRM Interne</h3>
+              <p className="text-xs text-slate-300 leading-relaxed h-10">Votre site public relié à un espace de gestion privé sur-mesure pour piloter votre activité.</p>
+              <div className="pt-4 pb-2">
+                <span className="text-4xl font-black text-white tracking-tighter">690€</span>
+                <span className="text-[10px] font-mono text-indigo-400 uppercase ml-2">Prix unique</span>
+              </div>
+              <ul className="space-y-3 pt-6 border-t border-slate-800/60 text-xs text-slate-200 font-medium">
+                <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Jusqu'à 3 pages sur-mesure</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Espace admin sécurisé (accès gérant)</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Base de données dédiée (Supabase)</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> 1 module métier au choix (réservation, devis/facturation...)</li>
+              </ul>
+            </div>
+            <a href="#contact" className="mt-8 block w-full text-center text-[10px] font-bold uppercase tracking-widest bg-indigo-500 text-white hover:bg-indigo-400 py-4 rounded-xl transition shadow-lg shadow-indigo-500/20">
+              Lancer mon projet
+            </a>
+          </div>
+
+          {/* OFFRE 3 : SUR-MESURE & AUTOMATISATION */}
+          <div className="bg-slate-900/20 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 flex flex-col justify-between text-left transition-all duration-300 hover:border-slate-700 hover:bg-slate-900/40">
+            <div className="space-y-4">
+              <span className="text-[10px] font-mono font-bold tracking-widest text-slate-500 uppercase">// SUR-MESURE & WORKFLOWS</span>
+              <h3 className="text-2xl font-bold text-white tracking-tight">Outil Métier & Automatisation</h3>
+              <p className="text-xs text-slate-400 leading-relaxed h-10">Pour les projets avancés, automatisations de tâches ou fonctionnalités spécifiques non listées.</p>
+              <div className="pt-4 pb-2">
+                <span className="text-3xl font-black text-white tracking-tighter">Sur Devis</span>
+              </div>
+              <ul className="space-y-3 pt-6 border-t border-slate-800/60 text-xs text-slate-300 font-medium">
+                <li className="flex items-center gap-2"><span className="text-slate-500">✓</span> Automatisations & scripts (workflows, notifications)</li>
+                <li className="flex items-center gap-2"><span className="text-slate-500">✓</span> Intégrations de paiement (Stripe) & API externes</li>
+                <li className="flex items-center gap-2"><span className="text-slate-500">✓</span> Espaces membres multi-rôles complexes</li>
+                <li className="flex items-center gap-2"><span className="text-slate-500">✓</span> Étude ouverte à toute demande digitale spécifique</li>
+              </ul>
+            </div>
+            <a href="#contact" className="mt-8 block w-full text-center text-[10px] font-bold uppercase tracking-widest bg-slate-950 text-white hover:bg-slate-800 py-4 rounded-xl transition border border-slate-800 hover:border-slate-600">
+              Discuter du projet
+            </a>
+          </div>
+
+        </div>
+
+        {/* 2. LE CHOIX DE L'HÉBERGEMENT & MAINTENANCE */}
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-10">
+            <h3 className="text-2xl md:text-3xl font-black tracking-tighter uppercase text-white mb-3">
+              Et pour la maintenance du site ?
+            </h3>
+            <p className="text-sm text-slate-400">
+              Une fois le site terminé, vous avez le choix. Aucune vente forcée.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            {/* OFFRE 1 : VITRINE BASIC */}
-            <div className="bg-slate-900/20 backdrop-blur-sm border border-slate-900 rounded-2xl p-6 flex flex-col justify-between text-left transition-all duration-300 hover:border-slate-800">
-              <div className="space-y-4">
-                <span className="text-[9px] font-mono font-bold tracking-widest text-slate-500 uppercase">// FORMULE ESSENTIELLE</span>
-                <h3 className="text-lg font-bold text-white">Site Vitrine</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">Idéal pour poser votre présence en ligne avec un design haut de gamme et ultra-rapide.</p>
-                <div className="pt-2">
-                  <span className="text-2xl font-black text-white">290€</span>
-                  <span className="text-[10px] font-mono text-slate-500 uppercase ml-2">Prix unique</span>
+            {/* OPTION 1 : INDÉPENDANCE (0€/MOIS STUDIO) */}
+            <div className="bg-slate-950 border border-slate-800 p-8 rounded-3xl text-left flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h4 className="text-lg font-bold text-white uppercase tracking-tight">Option 1 : Autonomie Totale</h4>
+                    <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mt-1">Vous gérez vous-même</p>
+                  </div>
+                  <span className="text-2xl font-black text-white tracking-tighter">0€<span className="text-xs font-normal text-slate-500 uppercase tracking-widest">/mois au studio</span></span>
                 </div>
-                <ul className="space-y-2 pt-4 border-t border-slate-900 text-xs text-slate-400">
-                  <li>✓ Page unique d'impact (Landing Page)</li>
-                  <li>✓ Design 100% Mobile & PC</li>
-                  <li>✓ Formulaire de contact direct</li>
-                  <li>✓ Aide au déploiement (Hébergement gratuit)</li>
+                <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                  Nous déployons le site et la base de données sur vos propres comptes. Vous êtes 100% propriétaire du code et gérez vos futures modifications en direct.
+                </p>
+                <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
+                  <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Remise intégrale du code source et accès root</li>
+                  <li className="flex items-center gap-2"><span className="text-emerald-400">✓</span> Zéro abonnement obligatoire avec notre agence</li>
+                  <li className="flex items-center gap-2 text-slate-500 text-[11px]">
+                    * Les infrastructures restent à vos frais directs (domaine ~12€/an, cloud gratuit ou selon vos volumes).
+                  </li>
                 </ul>
               </div>
-              <a href="#contact" className="mt-6 block w-full text-center text-xs font-bold uppercase tracking-widest bg-slate-900 text-white hover:bg-slate-800 py-3 rounded-xl transition border border-slate-800">
-                Sélectionner
-              </a>
             </div>
-
-            {/* OFFRE 2 : L'OFFRE PHARE (LE PACK ULTIME) */}
-            <div className="bg-slate-900/40 backdrop-blur-sm border-2 border-indigo-500/30 rounded-2xl p-6 flex flex-col justify-between text-left relative shadow-2xl shadow-indigo-500/5">
-              <span className="absolute -top-3 right-6 text-[9px] bg-indigo-500 text-white px-3 py-1 rounded-full font-bold tracking-widest uppercase shadow">
-                Le Meilleur Choix
-              </span>
-              <div className="space-y-4">
-                <span className="text-[9px] font-mono font-bold tracking-widest text-indigo-400 uppercase">// PACK DIGITALISATION</span>
-                <h3 className="text-lg font-bold text-white">Vitrine + CRM Interne</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">La fusion parfaite : votre vitrine publique connectée à votre propre logiciel de gestion privé.</p>
-                <div className="pt-2">
-                  <span className="text-2xl font-black text-white">690€</span>
-                  <span className="text-[10px] font-mono text-indigo-400 uppercase ml-2">Rapport qualité/prix imbattable</span>
+{/* OPTION 2 : PACK TRANQUILLITÉ (29€/MOIS) */}
+            <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-indigo-500/30 p-8 rounded-3xl text-left relative overflow-hidden group flex flex-col justify-between">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-500"></div>
+              <div>
+                <div className="flex justify-between items-start mb-6 relative z-10">
+                  <div>
+                    <h4 className="text-lg font-bold text-white uppercase tracking-tight">Option 2 : Pack Tranquillité</h4>
+                    <p className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest mt-1">Le choix des professionnels</p>
+                  </div>
+                  <span className="text-2xl font-black text-white tracking-tighter text-indigo-400">29€<span className="text-xs font-normal text-slate-500 uppercase tracking-widest">/mois</span></span>
                 </div>
-                <ul className="space-y-2 pt-4 border-t border-slate-900 text-xs text-slate-300">
-                  <li className="text-indigo-300 font-medium">✓ Jusqu'à 3 pages sur-mesure</li>
-                  <li className="text-indigo-300 font-medium">✓ Espace de gestion privé (CRM)</li>
-                  <li className="text-indigo-300 font-medium">✓ Générateur de factures automatisé</li>
-                  <li className="text-indigo-300 font-medium">✓ Configuration de votre hébergement Vercel</li>
+                <p className="text-xs text-slate-300 leading-relaxed mb-6 relative z-10">
+                  Vous n'avez pas le temps de gérer la technique. Nous infogérons votre site de A à Z, sans engagement de durée.
+                </p>
+                <ul className="space-y-2.5 text-xs text-white/80 font-medium relative z-10">
+                  <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> <strong className="text-white">Renouvellement annuel du nom de domaine inclus</strong></li>
+                  {/* Limite Vercel/Netlify (Bande passante traduite en visites) */}
+                  <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Hébergement trafic public (~50 000 visites/mois)</li>
+                  {/* Limite Supabase (Espace et MAU) */}
+                  <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Base de données (Jusqu'à 50 000 comptes clients & 500 Mo)</li>
+                  <li className="flex items-center gap-2"><span className="text-indigo-400">✓</span> <strong className="text-white">Jusqu'à 1h de modifications / mois</strong> (textes, tarifs)</li>
                 </ul>
               </div>
-              <a href="#contact" className="mt-6 block w-full text-center text-xs font-bold uppercase tracking-widest bg-indigo-600 text-white hover:bg-indigo-500 py-3 rounded-xl transition shadow-lg shadow-indigo-600/20">
-                Lancer mon projet
-              </a>
-            </div>
-
-            {/* OFFRE 3 : SUR-MESURE TOTAL */}
-            <div className="bg-slate-900/20 backdrop-blur-sm border border-slate-900 rounded-2xl p-6 flex flex-col justify-between text-left transition-all duration-300 hover:border-slate-800">
-              <div className="space-y-4">
-                <span className="text-[9px] font-mono font-bold tracking-widest text-slate-500 uppercase">// PROJET SUR-MESURE</span>
-                <h3 className="text-lg font-bold text-white">Outil Métier & SaaS</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">Pour les entreprises ayant un besoin complexe ou une idée d'application web unique.</p>
-                <div className="pt-2">
-                  <span className="text-2xl font-black text-white">Sur Devis</span>
-                </div>
-                <ul className="space-y-2 pt-4 border-t border-slate-900 text-xs text-slate-400">
-                  <li>✓ Logique de base de données avancée</li>
-                  <li>✓ Intégrations d'API tierces</li>
-                  <li>✓ Sécurité et comptes utilisateurs</li>
-                  <li>✓ Accompagnement architecture cloud</li>
-                </ul>
+              
+              <div className="pt-6 mt-6 border-t border-indigo-500/20 relative z-10">
+                <p className="text-[10px] text-indigo-200/50 leading-relaxed font-mono">
+                  * Ces quotas couvrent largement les besoins de 99% des commerces et TPE. En cas de succès viral (dépassement des limites d'infrastructure), l'augmentation de la capacité serveur sera facturée à prix coûtant.
+                </p>
               </div>
-              <a href="#contact" className="mt-6 block w-full text-center text-xs font-bold uppercase tracking-widest bg-slate-900 text-white hover:bg-slate-800 py-3 rounded-xl transition border border-slate-800">
-                Discuter de l'idée
-              </a>
             </div>
 
           </div>
-          {/* PETITE NOTE TRANSPARENCE : LE PROCESS D'HÉBERGEMENT */}
-          <div className="mt-12 max-w-2xl mx-auto bg-slate-900/10 border border-slate-900/60 rounded-xl p-4 text-left">
-            <p className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest mb-1">// PROCESSUS DE LIVRAISON INDÉPENDANT</p>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              <strong>Zéro abonnement technique avec le studio :</strong> Pour votre totale autonomie, nous créons votre propre compte hébergeur (Vercel/Netlify) ensemble lors de la livraison. Le site y est propulsé gratuitement, vous restez propriétaire à 100% de votre code et de vos accès, sans aucun intermédiaire.
-            </p>
-          </div>
-        </section>
+        </div>
 
-      {/* SECTION À PROPOS / SERVICES */}
+      </section>
+{/* SECTION À PROPOS / SERVICES */}
       <section id="services" className="bg-slate-950 py-32 px-6 border-t border-slate-900">
         <div className="max-w-6xl mx-auto">
           
@@ -386,42 +450,42 @@ export default function Home() {
           </p>
 
         {/* GROS TITRE ASYMÉTRIQUE MODIFIÉ */}
-<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-24">
-  <h2 className="lg:col-span-7 text-4xl md:text-6xl font-black tracking-tight uppercase leading-none text-white">
-    Vous imaginez, <span className="text-indigo-400 font-light">nous développons.</span> Aucun compromis technique.
-  </h2>
-  <p className="lg:col-span-5 text-slate-400 text-sm md:text-base leading-relaxed font-medium pt-2">
-    Du site vitrine ultra-minimaliste à l'application métier sur-mesure, nous transformons chaque défi technique en interface fluide. Grâce à un workflow moderne et propulsé par les derniers outils technologiques, nous livrons des résultats d'élite, sans barrière technique.
-  </p>
-</div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-24">
+          <h2 className="lg:col-span-7 text-4xl md:text-6xl font-black tracking-tight uppercase leading-none text-white">
+            Votre métier au centre, <span className="text-indigo-400 font-light">la technique autour.</span> Un vrai partenariat.
+          </h2>
+          <p className="lg:col-span-5 text-slate-400 text-sm md:text-base leading-relaxed font-medium pt-2">
+            Un projet digital réussi ne se construit pas en silence. Nous nous immergeons dans votre quotidien pour comprendre vos contraintes. De la première idée à la mise en ligne, nous avançons main dans la main avec vous, sans jargon, pour créer un outil qui sert vraiment votre activité.
+          </p>
+        </div>
 
           {/* GRILLE DES COMPÉTENCES (STYLE STUDIO PREMIUM) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-slate-900 pt-16">
             
-            {/* EXPERTISE 1 */}
+            {/* EXPERTISE 1 : COMMUNICATION & PARTENARIAT */}
             <div className="space-y-4 group">
               <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
-              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">UI / UX Design</h3>
+              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Échanges & Transparence</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Conception de maquettes minimalistes et immersives adaptées à votre image. Chaque pixel, transition et animation est pensé pour capter l'attention de vos visiteurs.
+                On ne disparaît pas dans une grotte pour coder. Vous êtes impliqué à chaque étape grâce à une communication fluide et des points réguliers (appels hebdomadaires, boucles de retours) pour valider l'avancée du projet ensemble et à votre rythme.
               </p>
             </div>
 
-            {/* EXPERTISE 2 */}
+            {/* EXPERTISE 2 : TECHNIQUE ORIENTÉE CLIENT */}
             <div className="space-y-4 group">
               <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
-              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Développement Next.js</h3>
+              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Solutions Sur-Mesure</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Code propre, performant et optimisé pour le référencement (SEO). Nous utilisons les dernières technologies pour garantir un affichage instantané sur mobile et ordinateur.
+                Fini les solutions génériques. Nous traduisons vos besoins concrets (attirer des clients, gérer des réservations, facturer) en une interface ultra-rapide et intuitive, pensée pour vous faire gagner du temps au quotidien.
               </p>
             </div>
 
-            {/* EXPERTISE 3 */}
+            {/* EXPERTISE 3 : SUIVI LONG TERME */}
             <div className="space-y-4 group">
               <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
-              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Solutions Connectées</h3>
+              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Suivi & Accompagnement</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Intégration d'API tierces (YouTube, Stripe), de bases de données dynamiques ou d'outils de gestion de contenu simples pour vous laisser les commandes de votre site.
+                Notre relation ne s'arrête pas le jour de la livraison. Nous restons à vos côtés pour assurer la maintenance de vos outils, faire évoluer votre site selon votre croissance et vous conseiller sur le long terme.
               </p>
             </div>
 
@@ -434,16 +498,16 @@ export default function Home() {
       <section id="contact" className="bg-slate-950 py-32 px-6 border-t border-slate-900">
         <div className="max-w-4xl mx-auto">
           
-          {/* EN-TÊTE */}
-          <div className="text-center mb-16">
-            <p className="text-xs font-bold tracking-widest text-indigo-400 uppercase mb-4">03 / Parlons-en</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase mb-4 text-white">
-              Soumettez votre défi.
-            </h2>
-            <p className="text-slate-400 text-sm max-w-xl mx-auto leading-relaxed">
-              Pas de grilles de tarifs pré-conçues ni d'offres rigides. Notre spécialité est le code et le design de haute précision, mais nous sommes ouverts à tout type de projet. Discutons de votre idée.
-            </p>
-          </div>
+         {/* EN-TÊTE HARMONISÉ AVEC TES OFFRES */}
+<div className="text-center mb-16">
+  <p className="text-xs font-bold tracking-widest text-indigo-400 uppercase mb-4">03 / Parlons-en</p>
+  <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase mb-4 text-white">
+    Soumettez votre défi.
+  </h2>
+  <p className="text-slate-400 text-sm max-w-xl mx-auto leading-relaxed">
+    Que ce soit pour une offre dédiée ou un besoin sur-mesure, décrivez vos objectifs. Nous analysons votre demande et définissons ensemble la solution adaptée.
+  </p>
+</div>
 
         {/* TON FORMULAIRE CONNECTÉ RE-CALIBRÉ */}
           <form 
@@ -475,14 +539,23 @@ export default function Home() {
             }}
             className="space-y-6 bg-slate-900/20 border border-slate-900 p-8 md:p-12 rounded-3xl backdrop-blur-md shadow-2xl relative"
           >
-            {status === "success" && (
-              <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-sm rounded-3xl flex flex-col items-center justify-center text-center p-6 z-40">
-                <span className="text-3xl mb-2">✨</span>
-                <h3 className="text-xl font-bold text-indigo-400 uppercase tracking-wide">Brief bien reçu !</h3>
-                <p className="text-xs text-slate-400 max-w-sm mt-1">Un mail de confirmation vient de vous être envoyé. On analyse votre défi et on vous recontacte très vite.</p>
-                <button type="button" onClick={() => setStatus("idle")} className="mt-6 text-[10px] uppercase tracking-widest font-bold text-white underline">Envoyer un autre message</button>
-              </div>
-            )}
+       {/* MESSAGE DE SUCCÈS SÉCURISÉ */}
+{status === "success" && (
+  <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-sm rounded-3xl flex flex-col items-center justify-center text-center p-6 z-40">
+    <span className="text-3xl mb-2">✨</span>
+    <h3 className="text-xl font-bold text-indigo-400 uppercase tracking-wide">Brief bien reçu !</h3>
+    <p className="text-xs text-slate-400 max-w-sm mt-2 leading-relaxed">
+      Un e-mail de confirmation vient de vous être envoyé. Pensez à vérifier vos courriers indésirables si vous ne le voyez pas d'ici deux minutes.
+    </p>
+    <button 
+      type="button" 
+      onClick={() => setStatus("idle")} 
+      className="mt-6 text-[10px] uppercase tracking-widest font-bold text-white underline hover:text-indigo-400 transition-colors"
+    >
+      Envoyer un autre message
+    </button>
+  </div>
+)}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
@@ -591,7 +664,7 @@ export default function Home() {
                 </a>
                 
                 {/* INSTAGRAM */}
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram" className="group">
+                <a href="https://www.instagram.com/samora_it_92/" target="_blank" rel="noopener noreferrer" title="Instagram" className="group">
                   <div className="p-2.5 bg-slate-900 rounded-xl border border-slate-800 group-hover:border-indigo-500/30 transition-all shadow-xl flex items-center justify-center">
                     <svg 
                       viewBox="0 0 24 24" 
