@@ -1,8 +1,10 @@
 "use client"; // Obligatoire pour utiliser le système de clic (useState)
 
-import { Mail } from 'lucide-react'; // Uniquement Mail !
+// Ajoute MessageSquare, Settings et ShieldCheck à tes imports Lucide
+import { Mail, MessageSquare, Settings, ShieldCheck } from 'lucide-react';
 import { useState, useEffect } from "react";
 import Link from "next/link";
+
 
 export default function Home() {
   // Cet état gère si le paquet de cartes est ouvert ou fermé
@@ -102,32 +104,32 @@ export default function Home() {
         </header>
 
       
-  {/* 3. LE TITRE GÉANT AU CENTRE - VERSION ULTRA PREMIUM & CONTRASTÉE */}
+ {/* 3. LE TITRE GÉANT AU CENTRE - VERSION ULTRA PREMIUM & CONTRASTÉE */}
         <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-4 w-full mt-10">
           
-          {/* Petit badge élégant au-dessus du titre */}
-          <div className="mb-6 md:mb-8 flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md shadow-2xl">
-            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-            <span className="text-[9px] md:text-[10px] font-bold tracking-widest uppercase text-white/90 font-mono drop-shadow-md">
-              Studio de création technologique
-            </span>
-          </div>
+          {/* BADGE AMÉLIORÉ : C'est ici qu'on met ta vraie proposition de valeur */}
+<div className="mb-6 md:mb-8 flex items-center gap-2.5 px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-indigo-500/30 bg-black/40 backdrop-blur-md shadow-[0_0_30px_rgba(99,102,241,0.15)] max-w-[90%] sm:max-w-max">
+  <span className="relative flex h-2 w-2 md:h-2.5 md:w-2.5 shrink-0">
+    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+    <span className="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-indigo-500"></span>
+  </span>
+  <span className="text-[8.5px] sm:text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase text-white font-mono whitespace-nowrap drop-shadow-md">
+    Studio de création technologique <span className="text-indigo-400">&</span> de code
+  </span>
+</div>
 
           {/* Le grand titre SAMORA IT avec effet de lueur sur le IT */}
           <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] font-black tracking-tighter uppercase text-center flex flex-col md:flex-row items-center justify-center leading-none select-none">
-            {/* Ombre portée renforcée pour "SAMORA" */}
             <span className="text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">SAMORA</span>
             <span className="relative ml-0 md:ml-4 mt-2 md:mt-0">
-              {/* Lueur (glow) derrière le IT */}
               <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-400 blur-2xl opacity-60"></span>
-              {/* Le texte IT en dégradé */}
               <span className="relative text-transparent bg-clip-text bg-gradient-to-br from-indigo-400 to-cyan-300 drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
                 IT
               </span>
             </span>
           </h1>
 
-          {/* Sous-titre avec ombre portée (text-shadow) pour la lisibilité */}
+          {/* Sous-titre */}
           <p className="mt-8 md:mt-12 text-sm md:text-base text-slate-200 max-w-2xl text-center font-medium leading-relaxed drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] px-4">
             Nous concevons des <strong className="text-white font-bold">applications web</strong> et des <strong className="text-white font-bold">expériences visuelles</strong> sur-mesure pour les entreprises qui refusent les compromis techniques.
           </p>
@@ -140,20 +142,19 @@ export default function Home() {
             </a>
           </div>
           
-        </div>                                                                                                                                                                                                                       
+        </div>                                                                                                                                                                                                                                                                                                                      
 
-        {/* 4. BARRE D'INFOS EN BAS */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pb-8 grid grid-cols-2 md:grid-cols-3 items-end text-[10px] md:text-xs font-medium tracking-widest uppercase text-white/60">
-          <div>
-            <p>Studio de création technologique & de code</p>
-          </div>
-          <div className="hidden md:block text-center">
-            <p>Paris, France</p>
-          </div>
-          <div className="text-right">
-            <p>© 2026 — Disponible pour des missions</p>
-          </div>
-        </div>
+   {/* 4. BARRE D'INFOS EN BAS (Fix mobile) */}
+<div className="relative z-20 w-full max-w-7xl mx-auto px-6 pb-6 pt-4 flex flex-col md:flex-row justify-between items-center md:items-end gap-2 text-[10px] md:text-xs font-medium tracking-widest uppercase text-white/60">
+  <div className="flex items-center gap-2">
+    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+    <p className="text-emerald-400/90 font-bold text-[9px] md:text-xs">Disponible pour de nouveaux projets</p>
+  </div>
+  
+  <div className="text-center md:text-right">
+    <p className="text-[9px] md:text-xs text-slate-500">Paris, France <span className="hidden md:inline">— © 2026</span></p>
+  </div>
+</div>
 
       </section>
 
@@ -441,52 +442,68 @@ export default function Home() {
 
       </section>
 {/* SECTION À PROPOS / SERVICES */}
-      <section id="services" className="bg-slate-950 py-32 px-6 border-t border-slate-900">
-        <div className="max-w-6xl mx-auto">
+      <section id="services" className="bg-slate-950 py-32 px-6 border-t border-slate-900 relative overflow-hidden">
+        {/* Lueur de fond très subtile */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
           
           {/* LIGNE D'ACCUEIL DE LA SECTION */}
-          <p className="text-xs font-bold tracking-widest text-indigo-400 uppercase mb-6">
+          <p className="text-xs font-bold tracking-widest text-indigo-400 uppercase mb-6 flex items-center gap-3">
+            <span className="w-8 h-[1px] bg-indigo-500/50"></span>
             02 / Notre Philosophie
           </p>
 
-        {/* GROS TITRE ASYMÉTRIQUE MODIFIÉ */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-24">
-          <h2 className="lg:col-span-7 text-4xl md:text-6xl font-black tracking-tight uppercase leading-none text-white">
-            Votre métier au centre, <span className="text-indigo-400 font-light">la technique autour.</span> Un vrai partenariat.
-          </h2>
-          <p className="lg:col-span-5 text-slate-400 text-sm md:text-base leading-relaxed font-medium pt-2">
-            Un projet digital réussi ne se construit pas en silence. Nous nous immergeons dans votre quotidien pour comprendre vos contraintes. De la première idée à la mise en ligne, nous avançons main dans la main avec vous, sans jargon, pour créer un outil qui sert vraiment votre activité.
-          </p>
-        </div>
+          {/* GROS TITRE ASYMÉTRIQUE MODIFIÉ */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-24">
+            <h2 className="lg:col-span-7 text-4xl md:text-6xl font-black tracking-tight uppercase leading-none text-white">
+              Votre métier au centre, <span className="text-indigo-400 font-light">la technique autour.</span> Un vrai partenariat.
+            </h2>
+            <p className="lg:col-span-5 text-slate-400 text-sm md:text-base leading-relaxed font-medium pt-2 border-l border-slate-800 pl-6">
+              Un projet digital réussi ne se construit pas en silence. Nous nous immergeons dans votre quotidien pour comprendre vos contraintes. De la première idée à la mise en ligne, nous avançons main dans la main avec vous, sans jargon, pour créer un outil qui sert vraiment votre activité.
+            </p>
+          </div>
 
           {/* GRILLE DES COMPÉTENCES (STYLE STUDIO PREMIUM) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-slate-900 pt-16">
             
             {/* EXPERTISE 1 : COMMUNICATION & PARTENARIAT */}
-            <div className="space-y-4 group">
-              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
-              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Échanges & Transparence</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                On ne disparaît pas dans une grotte pour coder. Vous êtes impliqué à chaque étape grâce à une communication fluide et des points réguliers (appels hebdomadaires, boucles de retours) pour valider l'avancée du projet ensemble et à votre rythme.
-              </p>
+            <div className="space-y-5 group">
+              <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-indigo-500/50 group-hover:bg-indigo-500/10 transition-all duration-300 shadow-lg">
+                <MessageSquare className="w-5 h-5 text-slate-400 group-hover:text-indigo-400 transition-colors duration-300" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-white transition-colors mb-3">Échanges & Transparence</h3>
+                <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
+                  On ne disparaît pas dans une grotte pour coder. Vous êtes impliqué à chaque étape grâce à une communication fluide et des points réguliers (appels, boucles de retours) pour valider l'avancée du projet ensemble.
+                </p>
+              </div>
             </div>
 
             {/* EXPERTISE 2 : TECHNIQUE ORIENTÉE CLIENT */}
-            <div className="space-y-4 group">
-              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
-              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Solutions Sur-Mesure</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Fini les solutions génériques. Nous traduisons vos besoins concrets (attirer des clients, gérer des réservations, facturer) en une interface ultra-rapide et intuitive, pensée pour vous faire gagner du temps au quotidien.
-              </p>
+            <div className="space-y-5 group">
+              <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-cyan-500/50 group-hover:bg-cyan-500/10 transition-all duration-300 shadow-lg">
+                <Settings className="w-5 h-5 text-slate-400 group-hover:text-cyan-400 transition-colors duration-300" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-white transition-colors mb-3">Solutions Sur-Mesure</h3>
+                <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
+                  Fini les solutions génériques. Nous traduisons vos besoins concrets (attirer des clients, gérer des réservations, facturer) en une interface ultra-rapide et intuitive pensée pour vous faire gagner du temps.
+                </p>
+              </div>
             </div>
 
             {/* EXPERTISE 3 : SUIVI LONG TERME */}
-            <div className="space-y-4 group">
-              <div className="text-xs font-mono text-indigo-500 font-bold tracking-widest"></div>
-              <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-indigo-400 transition-colors">Suivi & Accompagnement</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Notre relation ne s'arrête pas le jour de la livraison. Nous restons à vos côtés pour assurer la maintenance de vos outils, faire évoluer votre site selon votre croissance et vous conseiller sur le long terme.
-              </p>
+            <div className="space-y-5 group">
+              <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-emerald-500/50 group-hover:bg-emerald-500/10 transition-all duration-300 shadow-lg">
+                <ShieldCheck className="w-5 h-5 text-slate-400 group-hover:text-emerald-400 transition-colors duration-300" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold uppercase tracking-tight text-white/90 group-hover:text-white transition-colors mb-3">Suivi & Accompagnement</h3>
+                <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
+                  Notre relation ne s'arrête pas le jour de la livraison. Nous restons à vos côtés pour assurer la maintenance de vos outils, faire évoluer votre site selon votre croissance et vous conseiller sur le long terme.
+                </p>
+              </div>
             </div>
 
           </div>
